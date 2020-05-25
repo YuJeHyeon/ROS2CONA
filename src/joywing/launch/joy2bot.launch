@@ -1,0 +1,21 @@
+<launch>
+
+  <node name="joy2bot" pkg="joy2bot" type="joy2bot" output="screen" >
+  </node>
+
+  <!-- 2019-07-15 -->
+  <!-- joystick: joy_node, joywing_redone -->
+  <node pkg="joy" type="joy_node" name="joy" >
+	<param name="dev" type="string" value="/dev/input/js0" />
+	<param name="deadzone" value="0.05" />
+  </node>
+  <node pkg="joy" type="joy_node" name="joy1" >
+	<param name="dev" type="string" value="/dev/input/js1" />
+	<param name="deadzone" value="0.05" />
+  </node>
+
+  <node name="RosAria" pkg="rosaria" type="RosAria">
+  	<param name="port"         type="string" value="/dev/ttyUSB0"/>  
+  </node>
+
+</launch>

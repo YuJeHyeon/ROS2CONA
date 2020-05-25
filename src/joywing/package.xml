@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>joywing</name>
+  <version>0.0.0</version>
+  <description>The joywing package</description>
+
+  <maintainer email="jhkim@cogaplex.com">allenkim</maintainer>
+
+  <license>COGAPLEX</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <export>
+
+  </export>
+</package>
