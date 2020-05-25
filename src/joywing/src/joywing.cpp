@@ -97,13 +97,13 @@ void JoyWingCallback(const sensor_msgs::Joy::ConstPtr &joy)
         check_moving4 = true;
     if(check_moving4)
     {
-        roll = joy->axes[0] * +1 ;
-        // pitch = joy->axes[1] * 0.05;
+        roll = joy->axes[0] * -2 ;
+        pitch = joy->axes[1] + 1.56;
         pose.joint_names.clear();
-        // pose.joint_names.push_back("RShoulderPitch");
+        pose.joint_names.push_back("RShoulderPitch");
         pose.joint_names.push_back("RShoulderRoll");
         pose.joint_angles.clear();
-        // pose.joint_angles.push_back(pitch);
+        pose.joint_angles.push_back(pitch);
         pose.joint_angles.push_back(roll);
         pose.speed = 0.05;
         pose.relative = 0;
@@ -117,13 +117,13 @@ void JoyWingCallback(const sensor_msgs::Joy::ConstPtr &joy)
         check_moving5 = true;
     if(check_moving5)
     {
-        roll = joy->axes[0] * -1 ;
-        // pitch = joy->axes[1] * 1;
+        roll = joy->axes[0] * -2 ;
+        pitch = joy->axes[1] + 1.56;
         pose.joint_names.clear();
-        // pose.joint_names.push_back("LShoulderPitch");
+        pose.joint_names.push_back("LShoulderPitch");
         pose.joint_names.push_back("LShoulderRoll");
         pose.joint_angles.clear();
-        // pose.joint_angles.push_back(pitch);
+        pose.joint_angles.push_back(pitch);
         pose.joint_angles.push_back(roll);
         pose.speed = 0.05;
         pose.relative = 0;
