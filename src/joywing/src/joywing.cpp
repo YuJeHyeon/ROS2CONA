@@ -3,8 +3,6 @@
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/Joy.h>
 #include <naoqi_bridge_msgs/JointAnglesWithSpeed.h>
-#include "boost/thread/mutex.hpp"
-#include "boost/thread/thread.hpp"
 
 ros::Publisher robot_pub_;
 ros::Publisher joint_pub_;
