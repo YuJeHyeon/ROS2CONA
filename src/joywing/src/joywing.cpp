@@ -8,6 +8,8 @@ ros::Publisher robot_pub_;
 ros::Publisher joint_pub_;
 naoqi_bridge_msgs::JointAnglesWithSpeed pose;
 float linear_vel = 0.0f;
+float linear_vely = 0.0f;
+float angular_vely = 0.0f;
 float angular_vel = 0.0f;
 float headyaw_ = 0.0f;
 float headpitch_ = 0.0f;
@@ -28,6 +30,7 @@ void JoyWingCallback(const sensor_msgs::Joy::ConstPtr &joy)
 {
     float axes_hori_left = joy->axes[0];
     float axes_verti_left = joy->axes[1];
+    float axes_right_left = joy->axes[2];
     int buttons_left_down = joy->buttons[6];
     int buttons_right_down = joy->buttons[7];
     int buttons_y_down = joy->buttons[0];
@@ -44,7 +47,9 @@ void JoyWingCallback(const sensor_msgs::Joy::ConstPtr &joy)
     if(check_moving1)
     {
         linear_vel = axes_verti_left;
-        angular_vel = axes_hori_left;
+        linear_vely = axes_hori_left;
+        angular_vely = axes_right_left;
+        // angular_vel = axes_hori_left;
     }
     else
     {
@@ -156,13 +161,13 @@ int main(int argc, char **argv)
     // joint angle
     joint_pub_.publish(pose);
 	//linear
-    vel_pub.linear.x = linear_vel / 8;   // +: front, -: rear
-    vel_pub.linear.y = 0.0; 		
+    vel_pub.linear.x = linear_vel / 2;   // +: front, -: rear
+    vel_pub.linear.y = linear_vely / 2; 		
     vel_pub.linear.z = 0.0;
 	//rotation 		
     vel_pub.angular.x = 0.0; 		
     vel_pub.angular.y = 0.0; 		
-    vel_pub.angular.z = angular_vel / 8; 	// +: left, -: right
+    vel_pub.angular.z = angular_vely / 2; 	// +: left, -: right
 	
     printf("linear_x: %f, angular_z: %f\n", vel_pub.linear.x, vel_pub.angular.z);
 
